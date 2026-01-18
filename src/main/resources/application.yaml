@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: ltd-banking-sb
+  datasource:
+    url: jdbc:mysql://localhost:3306/banking_sb?useSSL=false&serverTimezone=UTC
+    username: admin_banking_sb
+    password: admin_banking_sb
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+#        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+---
+server:
+  port: 8080

@@ -1,0 +1,10 @@
+services:
+  mysql:
+    image: mysql:9.4.0
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=banking_sb
+      - MYSQL_USER=root
+    ports:
+      - "3306:3306"
