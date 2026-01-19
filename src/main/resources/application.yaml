@@ -2,7 +2,7 @@ spring:
   application:
     name: ltd-banking-sb
   datasource:
-    url: jdbc:mysql://localhost:3306/banking_sb?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/banking_sb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: admin_banking_sb
     password: admin_banking_sb
   jpa:
@@ -16,3 +16,20 @@ spring:
 ---
 server:
   port: 8080
+---
+management:
+  endpoints:
+    web:
+      base-path: /public/actuator
+      exposure:
+        include: health
+---
+springdoc:
+  api-docs:
+    enabled: true
+    path: /public/api-docs/
+  swagger-ui:
+    disable-swagger-default-url: true
+    path: /public/swagger-ui.html
+    operationsSorter: alpha
+    tagsSorter: alpha
