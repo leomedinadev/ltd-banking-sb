@@ -1,10 +1,21 @@
 services:
   mysql:
     image: mysql:9.4.0
-    container_name: mysql
+    container_name: banking-sb-mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
       - MYSQL_DATABASE=banking_sb
-      - MYSQL_USER=root
+      - MYSQL_USER=${DB_USERNAME:-admin_banking_sb}
+      - MYSQL_PASSWORD=${DB_PASSWORD:-admin_banking_sb}
     ports:
       - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  mysql_data:

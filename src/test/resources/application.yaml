@@ -1,0 +1,11 @@
+# Los tests usan H2 en memoria: no necesitan MySQL
+spring:
+  application:
+    name: ltd-banking-sb
+  datasource:
+    url: jdbc:h2:mem:banking_sb;MODE=MySQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
